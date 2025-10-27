@@ -1,0 +1,290 @@
+/* -- Import Google Font -- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;                  
+  padding: 0;                
+  box-sizing: border-box;     
+  font-family: 'Montserrat', sans-serif; 
+}
+
+
+/* - Body Styling -- */
+body {
+  background: linear-gradient(to right, #e2e2e2, #c9d6ff);  
+    background-image: url("greenbg.jpg");
+  display: flex;                
+  align-items: center;           
+  justify-content: center;     
+  min-height: 100vh;             
+  gap: 20px;                    
+  padding: 30px;               
+}
+
+
+/* -------------------- Main Container Box -------------------- */
+.container {
+  background: #caf3f4;         
+  border-radius: 30px;           /* Rounded corners */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.115); 
+  position: relative;         
+  overflow: hidden;           
+  width: 768px;               
+  max-width: 100%;              
+  min-height: 480px;             
+}
+
+/* -- Text Styling Inside Container -- */
+.container p {
+  font-size: 14px; line-height: 20px;
+  letter-spacing: 0.3px; margin: 20px 0;
+}
+
+.container span { font-size: 12px}; 
+
+.container a {
+  color: #38152c; font-size: 13px;
+  text-decoration: none; margin: 15px 0 10px;
+}
+
+/* ----Buttons --- */
+.container button {
+  background: #08152c;          
+  color: #fff;                 
+  font-size: 12px; padding: 10px 45px;
+  border: 1px solid transparent; border-radius: 8px;
+  font-weight: 600; letter-spacing: 0.5px;
+  text-transform: uppercase;  
+  margin-top: 10px; 
+  cursor: pointer; 
+}
+
+/* Transparent button style (for toggle side) */
+.container button.hidden {
+  background: transparent; border-color: #23decb;
+}
+
+/* ---Form Layout ----- */
+.container form {
+  background: #ccf2f0;          
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;     
+  padding: 0 40px; height: 100%;
+}
+
+/* ---- Input Fields --- */
+.container input {
+  background: #c3c1c1;              /* Light gray input background */
+  border: none;                  
+  margin: 8px 0;                 /* Space between inputs */
+  padding: 10px 15px;            /* Inner spacing */
+  font-size: 13px; border-radius: 8px; width: 100%; 
+  outline: none;
+}
+
+/* ---- Form Container & Animation --- */
+.form-container {
+  position: absolute; top: 0; height: 100%;
+  transition: all 0.6s ease-in-out; /* Smooth sliding animation */
+}
+
+/* Sign-in form (default visible) */
+.sign-in {
+  left: 0; width: 50%; z-index: 2;
+}
+
+/* When container active → sign-in slides to right */
+.container.active .sign-in {
+  transform: translateX(100%);
+}
+
+/* Sign-up form (hidden by default) */
+.sign-up {
+  left: 0; width: 50%; opacity: 0; z-index: 1;
+}
+
+/* When active - sign-up becomes visible with animation */
+.container.active .sign-up {
+  transform: translateX(100%);
+  opacity: 1; z-index: 5;
+  animation: move 0.6s;
+}
+/* -------------------- Social Icons -------------------- */
+.social-icons {
+  margin: 20px 0;
+}
+
+.social-icons a {
+  border: 1px solid #000000;
+  border-radius: 20%;
+  display: inline-flex; justify-content: center; align-items: center;
+  margin: 0 3px; width: 40px; height: 40px;
+}
+
+/* -------------------- Toggle (Sliding Blue Panel) -------------------- */
+.toggle-container {
+  position: absolute; top: 0; left: 50%;
+  width: 50%; height: 100%; overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  border-radius: 150px 0 0 100px;
+  z-index: 1000;
+}
+
+/* When active → toggle slides left */
+.container.active .toggle-container {
+  transform: translateX(-100%);
+  border-radius: 0 150px 100px 0;
+}
+
+/* Gradient blue background that slides */
+.toggle {
+  background: linear-gradient(to right, #060748, #045d42);
+  color: #fff; position: relative; left: -100%;
+  height: 100%; width: 200%;
+  transition: all 0.6s ease-in-out;
+}
+
+/* Moves gradient to middle when active */
+.container.active .toggle {
+  transform: translateX(50%);
+}
+
+/* -------------------- Toggle Panels (Text + Button) -------------------- */
+.toggle-panel {
+  position: absolute; width: 50%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; padding: 0 30px; text-align: center;
+  top: 0; transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+/* Left panel hidden initially */
+.toggle-left { transform: translateX(-200%); }
+
+/* When active → left panel slides into view */
+.container.active .toggle-left { transform: translateX(0); }
+
+/* Right panel visible by default */
+.toggle-right { right: 0; transform: translateX(0); }
+
+
+
+/* -- Error Message -- */
+.error {
+  color: red; font-size: 12px; margin-top: 5px;
+  display: none; text-align: left; width: 100%;
+}
+
+
+/* --QUIZ SECTION STYLING -- */
+
+/* Quiz zone hidden until login/signup complete */
+#quiz-zone {
+  display: none; width: 90%; max-width: 760px;
+  background:#0F172A; border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.12);
+  padding: 22px; color: #bca8a8;
+}
+
+/* Top bar with quiz title & timer */
+#quiz-zone .top {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px; margin-bottom: 10px;
+}
+
+/* Quiz title */
+#quiz-zone h2 {
+  margin: 0; font-size: 20px; color: #c5c3c8;
+}
+
+/* Timer text color */
+#quiz-timer {
+  font-weight: 700; color: #F59E0B;
+}
+
+/* Question card box */
+.quiz-card {
+  padding: 16px 8px; background: #1e293B;
+  border-radius: 8px;
+}
+
+/* Question heading */
+.quiz-card h3 {
+  margin: 0 0 12px 0; color: #F1F5F9; font-size: 18px;
+}
+
+/* Option list */
+.options {
+  display: flex; flex-direction: column;
+  gap: 8px; margin-top: 8px;
+  :hover{
+     background-color: #60A5FA;
+ 
+  box-shadow: 0 4px 8px rgba(28, 100, 126, 0.426);
+  cursor: grab;
+}
+
+
+  }
+  
+/* Each option design */
+.option-label {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 8px;
+  background: #e1c1e0; border: 1px solid #000000;
+  
+}
+/* Custom radio button style */
+.option-label input {
+  appearance: none; 
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid #010003; position: relative;
+}
+
+/* When selected */
+.option-label input:checked {
+  border: 6px solid #021928; background: #fff;
+}
+
+/* Option text */
+.option-label .opt-text {
+  display: flex;
+  flex: 1; color: #1E293B;
+ 
+}
+
+/* -- Quiz Control Buttons ---- */
+.controls {
+  display: flex; justify-content: flex-end;
+  gap: 8px; margin-top: 14px;
+}
+
+/* Next / Submit buttons */
+.btn-quiz {
+  background: rgba(164, 197, 132, 0.133); color: #fff;
+  border: none; padding: 8px 16px;
+  border-radius: 8px; cursor: pointer;
+}
+
+
+/* --- Quiz Result Table ---- */
+#quiz-result {
+  display: none;
+  background-color: #032721;
+  overflow: visible;
+}
+
+#quiz-result:hover {
+  cursor: pointer;
+}
+#quiz-result table {
+  width: 100%; border-collapse: collapse; margin-top: 10px;
+}
+
+#quiz-result th, #quiz-result td {
+  border: 1px solid #fefefe; padding: 8px; text-align: left;
+}
+
+/* Correct and wrong answer colors */
+#quiz-result .correct { color: green; font-weight: 600; }
+#quiz-result .wrong { color: rgb(154, 2, 2); font-weight: 600; }
