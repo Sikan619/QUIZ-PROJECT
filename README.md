@@ -1,3 +1,6 @@
+<img width="1915" height="906" alt="{81428D69-8E19-4C92-B198-10D9C1A5075C}" src="https://github.com/user-attachments/assets/5ad95ce5-26dc-469b-bc63-ec3723333cbb" />
+
+
 🧠 Interactive Quiz App
 
 A fast, clean, and beginner-friendly quiz application built to practice core web skills.
